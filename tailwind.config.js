@@ -10,12 +10,11 @@ export default {
       fontFamily: {
         inter: ['var(--font-inter)'],
       },
-      colors: {
-        background: 'rgb(var(--background) / <alpha-value>)',
-        foreground: 'rgb(var(--foreground) / <alpha-value>)',
-        muted: 'rgb(var(--muted) / <alpha-value>)',
-        accent: 'rgb(var(--accent) / <alpha-value>)',
+      boxShadow: {
+        'glass-inset': 'var(--shadow-glass-inset)',
+        'glass-sm': 'var(--shadow-glass-sm)',
       },
+
     },
   },
   plugins: [],
