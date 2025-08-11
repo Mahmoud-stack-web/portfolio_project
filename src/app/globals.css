@@ -60,3 +60,8 @@ html, body {
     transform: translate(100px, 100px);
   }
 }
+
+/*
+custom-bg: 
+border border-[var(--color-accent-with-opacity)] bg-[var(--background-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)]
+*/
