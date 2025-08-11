@@ -22,21 +22,21 @@ export const projectsData = [
     name: "Portfolio",
     description: "This project showcasing others",
     date: "2025-08-10",
-    demoLink: "#",
+    demoLink: "https://portfolio-project-peach-seven.vercel.app/",
   },
   {
     id: 2,
     name: "YouTube Clone",
     description: "Minimal clone using YouTube data API",
     date: "2025-07-20",
-    demoLink: "#",
+    demoLink: "https://youtube-clone-vf66.vercel.app/",
   },
   {
     id: 3,
     name: "Fast Shop",
     description: "Online e-commerce website",
     date: "2025-05-22",
-    demoLink: "#",
+    demoLink: "https://fast-shop-lilac.vercel.app/",
   },
 
 
