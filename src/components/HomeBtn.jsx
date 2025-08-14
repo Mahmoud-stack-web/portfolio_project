@@ -6,7 +6,7 @@ const HomeBtn = () => {
     <Link
       href={"/"}
       target={"_self"}
-      className="group text-[var(--color-foreground)]  rounded-full flex items-center justify-center border border-[var(--color-accent-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)] transition-shadow duration-300 ease-in-out bg-[var(--background-with-opacity)] fixed top-4 left-4 w-fit self-start"
+      className="group text-[var(--color-foreground)]  rounded-full flex items-center justify-center border border-[var(--color-accent-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)] transition-shadow duration-300 ease-in-out bg-[var(--background-with-opacity)] fixed top-4 left-4 w-fit self-start z-50"
       aria-label={"home"}
       name={"home"}
     >

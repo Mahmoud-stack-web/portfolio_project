@@ -20,7 +20,7 @@ export const projectsData = [
   {
     id: 1,
     name: "Portfolio",
-    description: "This project showcasing others",
+    description: "This project showcasing my work",
     date: "2025-08-10",
     demoLink: "https://portfolio-project-peach-seven.vercel.app/",
   },
