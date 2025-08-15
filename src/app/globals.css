@@ -10,6 +10,7 @@
     --color-accent: rgb(254 254 91);
     --background-with-opacity: rgba(27, 27, 27, 0.2);
     --color-accent-with-opacity: rgba(254, 254, 91, 0.3);
+    --color-accent-with-opacity2: rgba(254, 254, 91, 0.5);
     --firefly-radial: radial-gradient(50% 50% at 50% 50%, rgba(253, 255, 80, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
   }
 }
