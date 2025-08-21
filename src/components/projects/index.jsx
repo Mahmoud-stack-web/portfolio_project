@@ -2,7 +2,7 @@ import React from "react";
 import ProjectLayout from "./ProjectLayout";
 const ProjectList = ({ projects }) => {
   return (
-    <div className="w-full max-w-4xl px-16 space-y-6 flex flex-col items-center">
+    <div className="w-full max-w-auto  xl:max-w-4xl  px-4 lg:px-16 space-y-6 flex flex-col items-center mx-auto md:space-y-8">
       {projects.map((project, index) => {
         return <ProjectLayout key={index} {...project} />;
       })}

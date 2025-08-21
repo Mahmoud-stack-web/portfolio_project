@@ -12,6 +12,7 @@
     --color-accent-with-opacity: rgba(254, 254, 91, 0.3);
     --color-accent-with-opacity2: rgba(254, 254, 91, 0.5);
     --firefly-radial: radial-gradient(50% 50% at 50% 50%, rgba(253, 255, 80, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
+    --small-screen: rgb(27, 220, 27);
   }
 }
 
@@ -66,3 +67,46 @@ html, body {
 custom-bg: 
 border border-[var(--color-accent-with-opacity)] bg-[var(--background-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)]
 */
+
+@layer components {
+  .custom-bg {
+    border: 1px solid var(--color-accent-with-opacity);
+    background-color: var(--background-with-opacity);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow-glass-inset);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+}
+
+@layer utilities {
+  @media (min-width: 480px) {
+    .xs\:w-14 {
+      width: 3.5rem;
+    }
+
+    .xs\:h-14 {
+      height: 3.5rem;
+    }
+
+    .xs\:p-4 {
+      padding: 1rem;
+    }
+
+    .xs\:p-0 {
+      padding: 0px;
+    }
+
+    .xs\:w-max {
+      width: max-content;
+    }
+
+    .xs\:items-center {
+      align-items: center;
+    }
+
+    .xs\:hidden {
+      display: none;
+    }
+  }
+}
