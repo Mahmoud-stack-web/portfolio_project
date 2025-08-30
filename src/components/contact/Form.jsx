@@ -3,6 +3,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { Toaster, toast } from "sonner";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { scale: 0 },
+  show: { scale: 1 },
+};
 
 export default function Form() {
   const {
@@ -10,8 +27,17 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const sendEmail = (params) => {
     const toastId = toast.loading("Sending your message, please wait...");
+
+    toast.info(
+      "Form submissions are demo-only here. Please checkout the final code repo to enable it. If you want to connect you can reach out to me via horsewhite446@gmail.com",
+      {
+        id: toastId,
+      }
+    );
+
     emailjs
       .send(
         process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -28,17 +54,23 @@ export default function Form() {
         () => {
           toast.success(
             "I have received your message, I will get back to you soon!",
-            { id: toastId }
+            {
+              id: toastId,
+            }
           );
         },
         (error) => {
+          console.log("FAILED...", error.text);
           toast.error(
             "There was an error sending your message, please try again later!",
-            { id: toastId }
+            {
+              id: toastId,
+            }
           );
         }
       );
   };
+
   const onSubmit = (data) => {
     const templateParams = {
       to_name: "Mahmoud Salem",
@@ -46,70 +78,81 @@ export default function Form() {
       reply_to: data.email,
       message: data.message,
     };
+
     sendEmail(templateParams);
   };
-  console.log(errors);
+
   return (
     <>
       <Toaster richColors={true} />
-      <form
+      <motion.form
+        variants={container}
+        initial="hidden"
+        animate="show"
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md w-full flex flex-col items-center justify-center space-y-4"
       >
-        <input
+        <motion.input
+          variants={item}
           type="text"
           placeholder="name"
           {...register("name", {
             required: "This field is required!",
             minLength: {
               value: 3,
-              message: "Name should be at least 3 characters long!",
+              message: "Name should be at least 3 characters long.",
             },
           })}
-          className="w-full  p-2 text-[var(--color-foreground)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] border border-[var(--color-accent-with-opacity)] bg-[var(--background-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)]"
+          className="w-full p-2 rounded-md shadow-lg text-[var(--color-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] custom-bg"
         />
         {errors.name && (
           <span className="inline-block self-start text-[var(--color-accent)]">
             {errors.name.message}
           </span>
         )}
-        <input
+        <motion.input
+          variants={item}
           type="email"
           placeholder="email"
           {...register("email", { required: "This field is required!" })}
-          className="w-full  p-2 text-[var(--color-foreground)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] border border-[var(--color-accent-with-opacity)] bg-[var(--background-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)] "
+          className="w-full p-2 rounded-md shadow-lg text-[var(--color-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] custom-bg"
         />
         {errors.email && (
           <span className="inline-block self-start text-[var(--color-accent)]">
             {errors.email.message}
           </span>
         )}
-        <textarea
+        <motion.textarea
+          variants={item}
           placeholder="message"
-          className="w-full  p-2 text-[var(--color-foreground)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] border border-[var(--color-accent-with-opacity)] bg-[var(--background-with-opacity)] border-solid backdrop-blur-[6px] shadow-[var(--shadow-glass-inset)] hover:shadow-[var(--shadow-glass-sm)] "
           {...register("message", {
             required: "This field is required!",
             maxLength: {
               value: 500,
-              message: "Message should be less than 500 characters!",
+              message: "Message should be less than 500 characters",
             },
             minLength: {
               value: 50,
-              message: "Message should be more than 50 characters!",
+              message: "Message should be more than 50 characters",
             },
           })}
+          className="w-full p-2 rounded-md shadow-lg text-[var(--color-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] custom-bg"
         />
         {errors.message && (
           <span className="inline-block self-start text-[var(--color-accent)]">
             {errors.message.message}
           </span>
         )}
-        <input
+
+        <motion.input
+          variants={item}
           value="Cast your message!"
+          className="px-10 py-4 rounded-md shadow-lg bg-[var(--color-background)] border border-[var(--color-accent-with-opacity)] border-solid
+      hover:shadow-[var(--shadow-glass-sm)] backdrop-blur-sm text-[var(--color-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] cursor-pointer capitalize
+      "
           type="submit"
-          className="px-10 py-4 rounded-md bg-[var(--color-background)] shadow-lg border border-[var(--color-accent-with-opacity)] border-solid backdrop-blur-sm hover:shadow-[var(--shadow-glass-sm)] transition-shadow duration-300 ease-in-out text-[var(--color-foreground) focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-with-opacity2)] cursor-pointer capitalize"
         />
-      </form>
+      </motion.form>
     </>
   );
 }
